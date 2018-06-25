@@ -14,7 +14,8 @@ $stdin = fopen('php://stdin', 'r');
             echo "Pasirinkite veiksmą:\n
                 Kurti Naują klientą: spauskite 1\n
                 Redaguoti klientą: spauskite 2\n
-                Ištrinti klientą: spauskite 3:";
+                Ištrinti klientą: spauskite 3\n
+                Importuoti klientus iš failo: spauskite 4: ";
             $input = readline();
             if ($input == '1') {
                 createClient($conn);
@@ -62,6 +63,11 @@ $stdin = fopen('php://stdin', 'r');
                 allClients($conn);
                 $id = readline('Kurį įrašą norite ištrinti?: ');
                 deleteClient($conn, $id);
+                allClients($conn);
+                break;
+            }
+            if ($input == '4') {
+                insertFromFile($conn);
                 allClients($conn);
                 break;
             }
